@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div id="createData"></div>
 <h1>Markers</h1>
 
 <table>
@@ -11,19 +11,13 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @markers.each do |marker| %>
-      <tr>
-        <td><%= marker.name %></td>
-        <td><%= marker.url %></td>
-        <td><%= link_to 'Show', marker %></td>
-        <td><%= link_to 'Edit', edit_marker_path(marker) %></td>
-        <td><%= link_to 'Destroy', marker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <tbody id="data">
+    <% @markers.each do |m| %>
+            <%= render 'data', m: m %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Marker', new_marker_path %>
+<%= link_to 'New Marker', new_marker_path, remote: true %>

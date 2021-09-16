@@ -1,5 +1,6 @@
 class MarkersController < ApplicationController
   before_action :set_marker, only: %i[ show edit update destroy ]
+  before_action :set_type, only: [:edit, :new, :create]
 
   # GET /markers or /markers.json
   def index
@@ -22,14 +23,10 @@ class MarkersController < ApplicationController
   # POST /markers or /markers.json
   def create
     @marker = Marker.new(marker_params)
-
+    puts "********#{@marker.inspect}"
     respond_to do |format|
       if @marker.save
-        format.html { redirect_to @marker, notice: "Marker was successfully created." }
-        format.json { render :show, status: :created, location: @marker }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @marker.errors, status: :unprocessable_entity }
+        format.js {render nothing: true, notice: 'Marker was successfully created.'}
       end
     end
   end
@@ -62,8 +59,12 @@ class MarkersController < ApplicationController
       @marker = Marker.find(params[:id])
     end
 
+    def set_type
+      @types = Type.pluck :name, :id
+    end
+
     # Only allow a list of trusted parameters through.
     def marker_params
-      params.require(:marker).permit(:name, :url)
+      params.require(:marker).permit(:name, :url, :type_id)
     end
 end
