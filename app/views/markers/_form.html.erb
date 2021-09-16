@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.url_field :url, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
       <%= form.label :type %>
-      <%= form.select :type_id, options_for_select(@types), prompt: "Select type" %>
+      <%= form.select :type_id, options_for_select(@types), prompt: "Select type", class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+      <%= form.label :category %>
+      <%= form.select :category_id, options_for_select(@categories), prompt: "Select category", class: 'form-control' %>
   </div>
 
   <div class="actions">

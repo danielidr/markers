@@ -1,7 +1,9 @@
 <tr id="marker_<%= m.id %>">
     <td><%= m.name %></td> 
     <td><%= m.url %></td>
-    <td><%= link_to 'Show', m %></td>
-    <td><%= link_to 'Edit', edit_marker_path(m) %></td>
-    <td><%= link_to 'Destroy', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= m.type.name %></td>
+    <td><%= m.category.name %></td>
+    <td><%= link_to 'Show', m, class: "btn btn-light btn-sm" %></td>
+    <td><%= link_to 'Edit', edit_marker_path(m), class: "btn btn-light btn-sm" %></td>
+    <td><%= link_to 'Destroy', m, class: "btn btn-light btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

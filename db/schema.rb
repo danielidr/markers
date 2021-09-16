@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_234838) do
+ActiveRecord::Schema.define(version: 2021_09_16_181930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,19 +22,14 @@ ActiveRecord::Schema.define(version: 2021_09_15_234838) do
     t.integer "parent_id"
   end
 
-  create_table "categories_markers", id: false, force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.bigint "marker_id", null: false
-    t.index ["category_id", "marker_id"], name: "index_categories_markers_on_category_id_and_marker_id"
-    t.index ["marker_id", "category_id"], name: "index_categories_markers_on_marker_id_and_category_id"
-  end
-
   create_table "markers", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "type_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_markers_on_category_id"
     t.index ["type_id"], name: "index_markers_on_type_id"
   end
 
@@ -45,5 +40,6 @@ ActiveRecord::Schema.define(version: 2021_09_15_234838) do
   end
 
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "markers", "categories"
   add_foreign_key "markers", "types"
 end

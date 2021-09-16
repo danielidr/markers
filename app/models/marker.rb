@@ -1,4 +1,6 @@
 class Marker < ApplicationRecord
-    has_and_belongs_to_many :categories
+    belongs_to :category
     belongs_to :type
+    validates :name, :url, :type_id, :category_id, presence: true
+    validates :name, :url, uniqueness: true
 end
