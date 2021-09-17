@@ -22,7 +22,6 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
-    puts "****#{params.inspect}"
     parent_id = params[:category][:parent_id]
     if not parent_id == ""
       parent = Category.find_by(id: parent_id)
