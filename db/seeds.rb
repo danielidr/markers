@@ -8,23 +8,24 @@
 
 20.times do
     Type.create!(
-        name: Faker::Types.rb_string
+        name: Faker::Types.unique.rb_string
     )
 
     Category.create!(
-        name: Faker::Types.rb_string
+        name: Faker::Types.unique.rb_string,
         public: Faker::Boolean.boolean
     )
-
+end
+20.times do
     Category.create!(
-        name: Faker::Types.rb_string
+        name: Faker::Types.unique.rb_string,
         parent_id: rand(1..20)
     )
 
     Marker.create!(
-        name: Faker::Lorem.sentence
-        url: Faker::Internet.url
-        type_id: rand(1..20)
+        name: Faker::Lorem.unique.sentence,
+        url: Faker::Internet.unique.url,
+        type_id: rand(1..20),
         category_id: rand(1..20)
     )
 end
