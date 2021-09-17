@@ -11,9 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-6">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group col-6">
+    <%= form.label :parent_category %>
+    <%= form.collection_select :parent_id, Category.all, :id, :name, prompt: "Select category" %>
+  </div>
+
+  <div class="form-group col-6 level">
+    <%= form.label :visibility_level %>
+    <%= form.select :public, [['Public', true], ['Private', false]], prompt: "Select level" %>
   </div>
 
   <div class="actions">

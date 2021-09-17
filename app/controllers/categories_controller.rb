@@ -22,7 +22,13 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
-
+    puts "****#{params.inspect}"
+    parent_id = params[:category][:parent_id]
+    if not parent_id == ""
+      parent = Category.find_by(id: parent_id)
+      @category.public = parent.public
+    end
+    
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: "Category was successfully created." }
@@ -64,6 +70,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :public, :parent_id)
     end
 end
