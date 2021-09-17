@@ -4,6 +4,11 @@ class TypesController < ApplicationController
   # GET /types or /types.json
   def index
     @types = Type.all
+    @count = Marker.group(:type).count
+    @markes_types = Hash.new
+    @count.map { |hash|
+      @markes_types[hash[0].name] = hash[1]
+    }
   end
 
   # GET /types/1 or /types/1.json

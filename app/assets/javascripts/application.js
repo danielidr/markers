@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery/dist/jquery
+//= require chartkick
+//= require Chart.bundle
 //= require popper
 //= require bootstrap
 //= require rails-ujs

@@ -7,4 +7,7 @@ document.addEventListener('turbolinks:load', function(){
         }
         alert(error_string)
     });
+    $(".create-marker").click(function(){
+        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    });
 })

@@ -1,24 +1,10 @@
-# README
+Heroku: https://vast-temple-76011.herokuapp.com/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Endpoint: https://vast-temple-76011.herokuapp.com/api/v1/info
 
-Things you may want to cover:
+Para crear categorias y subcategorias se realiza en la misma vista, para el caso de las subcategorias, si se selecciona una categoria padre, se deshabilita la opción de seleccionar el nivel de visibilidad.
+Al crearse la subcategoria, será asignada automaticamente el nivel de visibilidad de la categoria padre.
 
-* Ruby version
+# Diagrama de modelos:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![GitHub Logo](/app/assets/images/Diagram.png)
